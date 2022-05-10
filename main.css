@@ -29,7 +29,8 @@ body{
 .logo-apple {
     background-size: 16px 44px;
     background-repeat: no-repeat;
-    background-image: url(../../fr_BE/images/be15095f-5a20-57d0-ad14-cf4c638e223a/globalnav_apple_image__cxwwnrj0urau_large.svg);
+    background-image: url(/logo.svg.svg);
     background-position: center center;
     width: 16px;
+    height: 44px;
 }
