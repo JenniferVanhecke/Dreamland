@@ -1,0 +1,122 @@
+<style>
+  .DL_usp_container {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    min-height: 30px;
+    background-color: #cc281c;
+    /* background-color: #7fa37c!important; */
+    color: #ffffff;
+    width: 100%;
+    z-index: 2;
+  }
+  .DL_usp_container a {
+    text-decoration: underline;
+    display: inline !important;
+  }
+  .DL_usp_container::before {
+    background-color: #cc281c;
+    content: "";
+    position: absolute;
+    left: -100vw;
+    right: -100vw;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  .DL_usp_item_icon,
+  .DL_usp_item_txt {
+    display: inline-block;
+    margin: 0;
+    line-height: 1.5em !important;
+    font-size: 13px;
+  }
+  .DL_usp_item_icon {
+    color: #005ba9;
+    margin-right: 3px;
+    font-size: 16px;
+  }
+  .DL_usp_item_txt {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #fff;
+    padding: 7px;
+  }
+  .DL_usp_close {
+    position: absolute;
+    right: 5px;
+    bottom: 2px;
+    padding: 5px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="DL_usp_container">
+  <p class="DL_usp_item_txt">
+    Oktoberdeals: tot -20% op bekende speelgoedmerken. <span id="demo"></span>.
+    <a
+      href="/e/nl/dl/oktober-deals"
+      data-campaign="1"
+      data-intpromo-name="oktoberdealsbalk"
+      data-intpromo-type="hp"
+      ><u>Bekijk ze hier!</u></a
+    >
+  </p>
+
+  <div class="DL_usp_close">
+    <span class="close">&times;</span>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    //Close the red block on icon
+    $(".DL_usp_close").click(function () {
+      $(".DL_usp_container").slideUp();
+    });
+  });
+</script>
+<script type="text/javascript">
+  let days = 0;
+  let hours = 0;
+  let minutes = 0;
+  let seconds = 0;
+
+  // Set the date we're counting down to
+  const countDownDate = Date.parse("Oct 16, 2022 23:59:59");
+
+  $(document).ready(function () {
+    updateTime(countDownDate);
+    updateDom();
+
+    let timer = setInterval(function () {
+      let distance = updateTime(countDownDate);
+      updateDom();
+
+      // If the count down is finished, write some text
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  });
+
+  function updateDom() {
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML =
+      "Nog " + days + "d " + hours + "u " + minutes + "m " + seconds + "s";
+  }
+
+  // Time calculations for days, hours, minutes and seconds
+  function updateTime(date) {
+    // Get today's date and time
+    let now = new Date().getTime();
+    let distance = date - now;
+    days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    return distance;
+  }
+</script>
